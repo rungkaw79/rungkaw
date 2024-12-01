@@ -1,0 +1,48 @@
+{% extends 'base_templates.html'%}
+
+{% block title %}
+<title>create - animal</title>
+{% endblock %}
+
+{% block content %}
+<h1 class="text-center">List Animal</h1>
+
+{% if message %}
+        {% for message in message %}
+            {% if message.tag == "error" %}
+            <div class="alert alert-danger" role="alert">
+                <strong>{{ message }}</strong>
+            </div>
+        {% else %}
+            <div class="alert alert-success" role="alert">
+                <strong>{{ message }}</strong>
+            </div>
+        {% endif %}
+    {% endfor %}
+    {% endif %}
+<table class="table">
+    <thead>
+        <tr>
+            <th>Base Name</th>
+            <th>Point</th>
+            <th>Channel</th>
+            <th>Data</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for animal in animals %}
+        <tr>
+            <td>{{ animal.base_name }}</td>
+            <td>{{ animal.point }}</td>
+            <td>{{ animal.channel }}</td>
+            <td>{{ animal.created_date }}</td>
+            <td><a href="/animal/edit/{{ animal.id }}" class="btn btn-warning">Edit</a></td>
+            <td><a href="/animal/delete/{{ animal.id }}" class="btn btn-danger" onclick="return confirm('ต้องการลบข้อมูล{{ animal.base_name }}หรือไม่?')">Delete</a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

@@ -1,0 +1,52 @@
+{% extends 'base_templates.html'%}
+
+{% block title %}
+<title>Edit - Animal</title>
+{% endblock %}
+
+{% block content %}
+<h1 class="text-center">Edit Animal</h1>
+<form action="/animal/edit/{{ animal.id }}" method="post">
+    {% csrf_token %}
+
+    <div class="form-group mb-3">
+        <label for="base_name">Base Name</label>
+        <input type="text" id="base_name" name="base_name"
+        class="form-control"
+        value="{{ animal.base_name }}">
+    </div>
+
+    <div class="form-group mb-3">
+        <label for="scientific_name">Scientific Name</label>
+        <input type="text" id="scientific_name" name="scientific_name"
+        class="form-control"
+        value="{{ animal.scientific_name }}">
+    </div>
+
+    <div class="form-group mb-3">
+        <label for="number">Favorite Number</label>
+        <input type="number" step="0.01" id="number" name="number" class="form-control"
+        value="{{ animal.number }}">
+    </div>
+
+    <div class="form-group mb-3">
+        <label for="number">Point</label>
+        <input type="number" step="0.01" id="point" name="point" class="form-control"
+        value="{{ animal.point }}">
+    </div>
+
+
+    <div class="form-group mb-3">
+        <label for="channel">Channel</label>
+        <select class="form-select" name="channel" id="channel">
+            <option value="forrest" {% if animal.channel == 'forrest' %} selected {% endif %}>Forrest</option>
+            <option value="land" {% if animal.channel == 'Land' %} selected {% endif %}>Land</option>
+            <option value="sea" {% if animal.channel == 'Sea' %} selected {% endif %}>Sea</option>
+            <option value="sky" {% if animal.channel == 'Sky' %} selected {% endif %}>Sky</option>
+        </select>
+    </div>
+    <div class="mb-5">
+    <input type="submit" value="Save" class="btn btn-primary">
+    </div>
+</form>
+{% endblock %}

@@ -1,0 +1,49 @@
+{% extends 'base_templates.html'%}
+
+{% block title %}
+<title>create - animal</title>
+{% endblock %}
+
+{% block content %}
+<h1 class="text-center"><Create Animal><Create></h1>
+
+<form action="/animal/create/" method="post">
+    {% csrf_token %}
+
+    <div class="form-group mb-3">
+        <label for="base_name">Base Name</label>
+        <input type="text" id="base_name" name="base_name"
+        class="form-control">
+    </div>
+
+    <div class="form-group mb-3">
+        <label for="scientific_name">Scientific Name</label>
+        <input type="text" id="scientific_name" name="scientific_name"
+        class="form-control">
+    </div>
+
+    <div class="form-group mb-3">
+        <label for="number">Favorite Number</label>
+        <input type="number" step="0.01" id="number" name="number" class="form-control">
+    </div>
+
+    <div class="form-group mb-3">
+        <label for="number">Point</label>
+        <input type="number" step="0.01" id="point" name="point" class="form-control">
+    </div>
+
+
+    <div class="form-group mb-3">
+        <label for="channel">Channel</label>
+        <select class="form-select" name="channel" id="channel">
+            <option value="forrest" select>Forrest</option>
+            <option value="land" >Land</option>
+            <option value="sea" >Sea</option>
+            <option value="sky" >Sky</option>
+        </select>
+    </div>
+    <div class="mb-5">
+    <input type="submit" value="Save" class="btn btn-primary">
+    </div>
+</form>
+{% endblock %}
